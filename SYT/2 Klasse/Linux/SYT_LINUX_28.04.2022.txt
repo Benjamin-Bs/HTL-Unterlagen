@@ -1,0 +1,27 @@
+1. Finden Sie alle (incl. Subverzeichnissen) .sh-Dateien.
+find /home/2A/ -name "*.sh"
+2. Finden Sie alle .sh-Dateien, aber nur ein Unterverzeichnis tief.
+find /home/2A/ -maxdepth 1 -name "*.sh"
+3. Finden Sie alle .sh-Dateien, aber case-insensitiv.
+find /home/2A/ -iname "*.sh"
+4. Finden Sie alle Dateien, die der Gruppe 2A gehören.
+find /home/2A/ -group "2A"
+5. Finden Sie alle Dateien, die dem User zog gehören.
+find /home/2A/ -user "zog"
+6. Finden Sie alle Dateien mit den Berechtigungen 754.
+find /home/2A/ -perm 754
+7. Finden Sie alle Verzeichnis (incl. Subverzeichnisse) mit der Berechtigung 755.
+find /home/2A/ -perm 755 -type d
+8. Finden Sie alle Dateien die jünger als 24h sind.
+find /home/2A/ -atime 0 
+9. Finden Sie eine Dateien die größer 10kByte ist.
+find /home/2A/ -size +10k
+10. Zählen Sie die Anzahl der Zeilen in dieser Datei (Befehl: wc).
+find /home/2A/|wc -l
+wc /home/2A/find/linux-essentials-1.md -l
+11. Suchen Sie in dieser Datei nach dem Text "dev/sda" (Befehl: grep) und ermitteln Sie die Zeilennummer.
+find /home/2A/find/linux-essentials-1.md -exec wc grep dev/sda {} \; 
+
+
+Lösen Sie folgende Aufgaben (wenn notwendig mit der Unterstützung z.B. von ss64.com)
+indem Sie das Verzeichnis /home/2A mit dem find-Befehl durchsuchen.

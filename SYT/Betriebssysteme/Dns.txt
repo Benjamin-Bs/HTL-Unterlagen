@@ -1,0 +1,15 @@
+Dns
+
+Forward Lookup Zones
+nachname.at
+
+New Alias
+
+Forward Lookup Zones
+ New Zone
+	immer oben auswählen
+
+
+Forwarders
+
+Root Hints

@@ -1,0 +1,31 @@
+1. Kopieren Sie den Inhalt des Verzeichnis /home/2A/20220505 incl. aller Unterverzeichnisse (cp -R) nach ~/20220505.
+cp -R /home/2A/20220505/ ~
+
+2. Führen Sie im Verzeichnis ~/20220505 die folgenden Schritte durch.
+
+3. Finden Sie alle Dateien, die mit 2AHITS beginnen. (1 Treffer)
+find -name "2AHITS*"
+4. Finden Sie alle Dateien, die mit 2 beginnen und ab der 3. Stelle noch HITS enthalten. (3 Treffer)
+find -name "2?HITS*"
+5. Finden Sie alle Dateien, die mit 2 beginnen und dann noch HITS enthalten. (4 Treffer)
+find -name "2*HITS*"
+6. Finden Sie alle Dateien wie im vorigen Punkt, aber case-insensitiv.  (5 Treffer)
+find -iname "2*HITS*"
+7. ...wie im vorigen Punkt, und geben Sie deren Dateinamen mit echo aus.
+find -iname "2*HITS*" -exec echo {} \;
+8. ...wie im vorigen Punkt, und geben Sie deren Inhalt aus.
+find -iname "2*HITS*" -exec cat {} \;
+9. ...wie im vorigen Punkt, und geben Sie die Anzahl der in der Datei enthaltenen Zeichen aus.
+find -iname "2*HITS*" -exec wc {} \;
+10. ...wie im vorigen Punkt, und erstellen Sie eine Kopie mit dem Namen "<ursprünglicher Name>.copy".
+find -iname "2*HITS*" -exec cp {} {}.copy \;
+11. Finden Sie alle leeren Dateien.
+find -empty
+12. Finden Sie alle leeren Dateien und übergeben Sie diese dem echo-Befehl.
+find -empty -exec echo {} \;
+13. Finden Sie alle leeren Dateien und kopieren Sie diese mit dem zusätzlichen Namensende ".empty".
+find -empty -exec cp {} {}.empty \;
+14. Finden Sie alle Dateien größer 10kByte.
+find -size +10k
+5. Hängen Sie an den Dateinamen aller Dateien größer 10kByte .huge an.
+find -size +10k -exec mv {} {}.huge \;

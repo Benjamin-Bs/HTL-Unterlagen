@@ -1,0 +1,32 @@
+#!/bin/bash
+
+
+# Script um diese Zeit mit diesen Parametern aufgerufen
+echo "$(date +"%X"): Script $0 with params >$@< started"
+
+
+ 
+
+# Wenn der Parameter "beginn" übergeben wurde
+if [ "$1" = "begin" ]; then
+  # Wenn Verzeichnis "today" bereits existiert
+  if [ -d ~/today ]; then
+    # Fehlermeldung
+    echo "Directory >~/today< already exists!"
+  # sonst
+  else
+    # Verzeichnis anlegen
+    mkdir ~/today;
+    echo "Directory >~/today< angelegt!"
+  fi
+elif [ "$2" = "end" ]; then
+  # kopieren von today in Datumsverzeichnis YYYYMMDD
+  name=$(date +"%Y%m%d")
+  echo "directoryname: $name"
+  #...
+else
+  # Parameter fehlt; freundliche Hilfe
+fi 
+ 
+
+exit 0

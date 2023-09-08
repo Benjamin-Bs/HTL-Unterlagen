@@ -1,0 +1,33 @@
+$scores.Add($fullname,[PSCustomObject]@{ `
+	sumOfScores = $entry.score `
+	countOfScores = 1 }
+
+$scores[$fullName].sumOfScores += $entry.score		//Man bekommt das PSCustomObject zurück
+$scores[$fullName].countOfScores++
+
+
+Mit "Get-Member" zeigt es alle Sachen in Object an
+
+----------------------------------
+
+$myMethod = @{
+	MemberType = "ScriptMethode"
+	Name = "getAverage"
+	Value = {
+	return ( this.sumOfScores  / this.countOfScores)
+	}
+}
+
+$myObject = [PSCostumObject]@{
+	sumOfScores = 20
+	countOfScores = 5
+}
+Get-Member -InputObject $myObject
+
+Add-Member -InputObject $myObject @myMethod
+"Durchscnitt " + $myObject.getAverage
+
+---------------------------------
+Ein Objekt hat members
+
+Add-Member ist dafür da, dass dich myMethod und myObject "verbinden"

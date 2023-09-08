@@ -1,0 +1,28 @@
+#Router:
+
+ena
+conf t
+access-list 5 deny 192.168.3.0 0.0.0.255	#Ip addressen sind in diesem verboten
+access-list 5 permit any
+
+int fa0/0.1
+access-g
+encapsulation dot1Q 100
+ip access-group 5 in
+ip access-group 5 out
+
+
+
+access-list 100 permit tcp any any eq 80
+access-list 101 permit tcp any any established
+access-list 100 permit tcp any any eq 443
+
+access-list 100 permit udp any any eq 53
+access-list 101 permit udp any eq 53 any
+access-list 100 permit udp any eq 68 any eq 67
+access-list 101 permit udp any eq 67 any ep 68
+
+interface fa0/0.2
+encapsulation dot1Q 200
+ip access-group 100 in
+ip access-group 101 out

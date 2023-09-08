@@ -1,0 +1,73 @@
+hostname RouterB
+!
+boot-start-marker
+boot-end-marker
+!
+!
+memory-size iomem 10
+no aaa new-model
+ip subnet-zero
+!
+!
+!
+ip dhcp pool LanB
+   network 192.168.0.16 255.255.255.240
+   default-router 192.168.0.17
+   domain-name 172.16.1.1
+!
+ip cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ ip address 192.168.0.82 255.255.255.240
+ duplex auto
+ speed auto
+!
+interface Serial0/0
+ no ip address
+ shutdown
+ no fair-queue
+!
+interface FastEthernet0/1
+ ip address 192.168.0.17 255.255.255.240
+ duplex auto
+ speed auto
+!
+interface Serial0/1
+ no ip address
+ shutdown
+!
+ip http server
+ip classless
+ip route 192.168.0.0 255.255.255.240 192.168.0.81
+ip route 192.168.0.32 255.255.255.240 192.168.0.83
+ip route 192.168.0.48 255.255.255.240 192.168.0.84
+ip route 192.168.0.64 255.255.255.240 192.168.0.85
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+!
+!
+end

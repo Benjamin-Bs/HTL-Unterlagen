@@ -1,0 +1,100 @@
+Router 1:
+
+system/identity/set name=Router1
+
+interface bridge add name=brigde1
+iterface bridge port add bridge=bridge1 interface=ether3
+iterface bridge port add bridge=bridge1 interface=ether4
+iterface bridge port add bridge=bridge1 interface=ether5
+
+/ip route add dst-address=192.168.10.0/24 gateway=10.0.0.0
+-----------------------------------------------------------
+zum entfernen :
+
+/ip route print
+/ip route remove numbers=0
+-----------------------------------------------------------
+ip addres add interface=bridge1 address 192.168.2.1/24
+ip addres add interface=ether1 address 10.0.0.0/30
+
+-----------------------------------------------------------
+Zum anderen MicroTik wechseln:
+
+/ip/neighbor/print
+
+/tool/mac-telnet 08:55:31:9D:04:71
+
+Benutzer: admin
+Password: 
+-----------------------------------------------------------
+
+Router 2:
+
+system/identity/set name=Router2
+
+ip addres add interface=ether1 address 10.0.0.2/30
+ip addres add interface=ether2 address 10.0.0.5/30
+
+/ip route add dst-address=192.168.10.0/24 gateway=10.0.0.6
+/ip route add dst-address=192.168.20.0/24 gateway=10.0.0.1
+-----------------------------------------------------------
+
+Router 3: 
+
+system/identity/set name=Router3
+
+
+-----------------------------------------------------------
+for Schleife:
+
+for i from=2 to=5 step=1 do={
+{... /interface/bridge/port/add bridge=bridge1 interface=("ether".$i)
+{... }
+-----------------------------------------------------------
+
+ip addres add interface=bridge1 address 192.168.10.1/24
+ip addres add interface=ether1 address 10.0.0.6/30
+
+/ip route add dst-address=192.168.10.0/24 gateway=10.0.0.5
+/ip route add dst-address=10.0.0.0/30 gateway=10.0.0.5
+-----------------------------------------------------------
+Zum entfernen: 
+
+/ip route print 
+/ip route remove numbers=0,1
+
+-----------------------------------------------------------
+Zum setzen:
+
+/ip route set .... number=0
+
+-----------------------------------------------------------
+RIP:
+Router 3:
+
+routing rip
+
+routing rip instance add name=rip1 redistribute=connected
+
+routing rip interface-template add interfaces=ether1 instance=rip1
+
+-----------------------------------------------------------
+Router 2:
+
+routing rip
+
+routing rip instance add name=rip1 redistribute=connected,rip
+
+routing rip interface-template add interfaces=ether1,ether2 instance=rip1
+
+-----------------------------------------------------------
+Router 1 :
+
+routing rip
+
+routing rip instance add name=rip1 redistribute=connected
+
+routing rip interface-template add interfaces=ether1 instance=rip1
+
+routing rip instance set redistribute=connected,rip
+-----------------------------------------------------------

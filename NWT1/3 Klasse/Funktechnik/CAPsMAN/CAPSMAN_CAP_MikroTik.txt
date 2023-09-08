@@ -1,0 +1,37 @@
+/interface/bridge/add name=br
+
+for i from=1 to=5 do={ /interface/bridge/port/add bridge=br interface=("ether"$i)}
+
+ for i from=10 to=30 step=10 do={ /interface/bridge/vlan/add vlan-ids=$i bridge=br tagged=bt,ether1     
+{... /interface/vlan/add interface=br vlan-id=$i name=("VLAN". $i)
+{... /ip/address/add interface=("VLAN".$i) address=("192.168.".$i".)
+
+
+#Caps-Man:
+
+/caps-man/security/add authentication-types=wpa2-psk encryption=aes-ccm group-encry
+ption=aes-ccm passphrase="Mitarbeiter123" name=SecMitarbeiter
+
+/caps-man/datapath/add name=DPMitarbeiter local-forwarding=yes client-to-client-for
+warding=yes vlan-mode=use-tag vlan-id=10
+...
+
+/caps-man/channel/add band=2ghz-onlyn control-channel-width=20mhz tx-power=1 name=C
+hannels2GHz save-selected=yes frequency=2412,2432,2452,2472
+
+/caps-man/channel/add band=5ghz-n/ac  control-channel-width=20mhz tx-power=10 name=Channels5GHz save-selected=yes freq
+uency=5180,5260,5500,5580,5660,5745 extension-channel=Ceee
+
+/caps-man/configuration/add name=ConfMitarbeiter2Ghz ssid=Mitarbeiter country=austria installation=indoor mode=ap chan
+nel=Channels2GHz  datapath=DPMitarbeiter  security=SecMitarbeiter 
+
+/caps-man/provisioning/add hw-supported-modes=g master-configuration=ConfMitarbeiter2Ghz action=create-enabled name-fo
+rmat=prefix-identity name-prefix=2GHz
+
+/caps-man/manager/set enabled=yes
+
+#Cap:
+
+/interface/wireless/cap/set bridge=br discovery-interfaces=VLAN30 enabled=yes interfaces=wlan1,wlan2
+
+

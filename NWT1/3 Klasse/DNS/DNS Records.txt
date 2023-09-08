@@ -1,0 +1,23 @@
+DNS
+
+Record-Typen:
+
+//Namen in Ip-Addressen umwandeln:
+A			Name --> IPv4
+AAAA			Name --> IPv6		//Es hat mehr A's weil Ipv6 größer ist
+CNAME 		Name --> Name
+Mx			"Mail Exchange"	Mailserver
+TXT			Name --> Text
+NS			Name --> Nameserver
+---------------------------------------------
+PTR			Ip-Addresse --> Name
+
+Mit nslookup kann man nach Record Typen suchen
+
+SPF :
+(gehört zum TXT Tecord)
+Wo man für eine domain bestimmen kann wer auf der domain Emails schicken darf
+
+193.170.204.29
+Die Ip Addresse muss gestürzt werden 
+29.204.170.193.in-addr.arpa

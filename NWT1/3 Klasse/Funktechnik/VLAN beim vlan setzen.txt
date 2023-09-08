@@ -1,0 +1,12 @@
+VLAN beim vlan setzen
+
+vlan-mode=use-tag
+vlan-id=100
+
+Wenn es dynamisch eingestellt ist braucht man "vlan-id=100" nicht
+
+
+/interface/wireless/add master-interface=wlan1 ssid="Andere" vlan-id=200 name="AnderesFI" vlan-mode=use-tag
+
+Danach darf nicht vergessen werden wlan2 in die Tagged Liste zu schreiben
+

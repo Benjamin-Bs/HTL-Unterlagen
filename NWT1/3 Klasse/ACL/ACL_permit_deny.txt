@@ -1,0 +1,48 @@
+		1-99:standard ACL
+ACL:
+		100-199:extended ACL
+
+incoming
+outcoming
+
+
+permit/deny			|IP|host|any  	  +--> Wildcard Mask 		+--> IP
+					 |__|____________|						|
+					    |________________________________________|
+
+
+
+		/24 : 255.255.255.0
+			   0. 0 . 0 .0
+   
+  +-->
+  |
+  |	permit 192.168.100.0  0.0.0.255 	//Hier wird die Source addresse verglichen
+  |	
+  +- deny host 192.168.100.10 
+	
+	permit any
+	
+// Die erste Zeile wird immer gemeched da sie reinfällt
+
+	overload = nate viele Ip addresen auf eine globale
+
++-------------------------------------------------------------------------------+
+| acces-list (number) permit/deny (Ip Addresse) (Subnetzmaske aber nur negiert) |
++-------------------------------------------------------------------------------+
+
++-------------------------------------------------------------------+	
+|	int Gig0/0										   |
+|		ip nat outside/inside							   |
+|-------------------------------------------------------------------|										
+|	int Gig0/1										   |
+|		ip nat inside/outside							   |
+|-------------------------------------------------------------------|
+|	ip nat inside source list (number) interface Gig0/0 overload   |
++-------------------------------------------------------------------+
+
+
+SRC-NAT
+DST-NAT
+
+	

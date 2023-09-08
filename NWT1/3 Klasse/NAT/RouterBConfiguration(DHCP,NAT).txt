@@ -1,0 +1,94 @@
+version 12.3
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname RouterB
+!
+boot-start-marker
+boot-end-marker
+!
+!
+memory-size iomem 10
+no aaa new-model
+ip subnet-zero
+ip cef
+!
+!
+!
+ip dhcp pool LanB
+   network 192.168.0.16 255.255.255.240
+   default-router 192.168.0.17
+   dns-server 172.16.1.1
+!
+ip audit po max-events 100
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ description zum Internet
+ ip address 172.16.67.102 255.255.255.0
+ ip nat outside
+ duplex auto
+ speed auto
+!
+interface Serial0/0
+ no ip address
+ shutdown
+ no fair-queue
+!
+interface FastEthernet0/1
+ description zum LAN
+ ip address 192.168.0.17 255.255.255.240
+ ip nat inside
+ duplex auto
+ speed auto
+!
+interface Serial0/1
+ no ip address
+ shutdown
+!
+interface Serial0/2
+ no ip address
+ shutdown
+!
+interface Serial0/3
+ no ip address
+ shutdown
+!
+ip nat inside source list 10 interface FastEthernet0/0 overload
+ip http server
+no ip http secure-server
+ip classless
+ip route 0.0.0.0 0.0.0.0 172.16.67.1
+!
+!
+access-list 10 permit any
+!
+!
+!
+!
+!
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+!
+!
+end

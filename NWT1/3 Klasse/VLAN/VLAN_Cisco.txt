@@ -1,0 +1,23 @@
+Cisco VLAN:
+
+Switch:
+
+en
+conf t
+vlan 10
+name Server
+exit
+do show vlan
+-----------------------------------------------------------------------
+
+do show run
+do wr
+end 
+
+conf t
+int fa0/1
+switchport mode access
+switchport access vlan 20
+
+int Gig0/1
+switchport mode trunk

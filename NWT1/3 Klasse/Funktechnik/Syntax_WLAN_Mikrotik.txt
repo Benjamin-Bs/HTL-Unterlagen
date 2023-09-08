@@ -1,0 +1,34 @@
+Security Profile: 
+/interface/wireless/security-profiles/add 	name="NAME"
+							  /set	mode="dynamic-keys
+									authentication-types = wpa2-psk
+													   wpa2-eap
+									wpa2-pre-shared-key="PASSWORD" //mid. 16 Zeichen
+									
+	wpa2-eap:
+	
+	eap-methode=PEAP
+	mschapv2-username=...
+	mschapv2-password=...
+	tls-mode=dont-verify-certification
+	supplicant-identity="MyIdentity"
+
+
+PSK.....Pre Shared Key
+EAP.....Extensible Authentication Protokol
+
+Ein gutes Password sollte nicht in einem Wörterbuch (Duden) vorkommen
+
+
+/interface/wireless/set wlan1 mode=ap-bridge
+						     station
+						ssid="SSID"
+						security-profile="NAME"
+						band="g/n-only"
+						channel-width="20/40/80MHz Ceee" oder "20MHz"
+						frequency=2472
+						country=austria
+						disabled=no
+						tx-power=
+						
+

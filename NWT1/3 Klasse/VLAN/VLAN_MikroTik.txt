@@ -1,0 +1,26 @@
+ /system/identity/set/name="Switch 1"
+
+/interface/bridge/add name=bridge1
+
+/interface/bridge/vlan/add bridge=bridge1 vlan-ids=100
+/interface/bridge/vlan/add bridge=bridge1 vlan-ids=200
+/interface/bridge/vlan/add bridge=bridge1 vlan-ids=300
+
+for i from=1 to=5 do={
+/interface/bridge/port/add bridge=bridge1 interface=("ether".$i)
+}
+
+/interface/bridge/port/print
+/interface/bridge/port/set pvid=300 numbers=1
+/interface/bridge/port/set pvid=100 numbers=2
+/interface/bridge/port/set pvid=200 numbers=3
+
+
+/interface/bridge/vlan/set tagged=ether1,ether5 untagged=ether3 numbers=[/interface/bridge/vlan/find where vlan-ids=100]
+/interface/bridge/vlan/set tagged=ether1,ether5 untagged=ether4 numbers=[/interface/bridge/vlan/find where vlan-ids=200]
+/interface/bridge/vlan/set tagged=ether1,ether5 untagged=ether2 numbers=[/interface/bridge/vlan/find where vlan-ids=300]
+
+Bei der Bridge Vlan Filtering einschalten
+
+/ip/neighbor/print
+/tool/mac-telnet (mac-addresse) // zum anderen MicroTik zu wechseln

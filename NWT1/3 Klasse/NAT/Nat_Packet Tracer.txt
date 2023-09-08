@@ -1,0 +1,9 @@
+en 
+conf t
+int gig 0/1
+ip addr (adresse)
+no shut
+
+ip nat inside source static tcp (adresse + port) (globale-adresse + port)
+
+show ip nat translations

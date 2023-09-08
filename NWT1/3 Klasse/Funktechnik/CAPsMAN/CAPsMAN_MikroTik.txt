@@ -1,0 +1,68 @@
+//Davor muss noch ein DHCP Server geschrieben werden
+/ip/dhcp-client/add interface=ether1 disabled=no
+/interface/bridge/port/add name=br
+/interface/bridge/port add bridge=br interface=ether1
+/interface/bridge/port add bridge=br interface=ether2
+/interface/bridge/port add bridge=br interface=ether3
+/interface/bridge/port add bridge=br interface=ether4
+/interface/bridge/port add bridge=br interface=ether5
+
+/interdace/bridge/vlan/add bridge=br vlan-ids=10 tagged=nr,ether1 untagged
+...
+/interface/vlan/add interface=br vlan-id=10 name=VL10
+...
+
+/ip/pool/add ranges=192.168.10.10-192.168.10.250
+...
+
+/ip/dhcp-server/network/add address=0.0.0.0/0 dns-server=192.168.0.1 gateway=192.168.10.1
+...
+
+/ip/dhcp-server/add name=dhcp30 interface=IntVL30 address-pool= ...
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+#CAPs-MAN
+
+/system/identity/set name=caps-man
+
+
+/caps-man/manager/set enabled=yes
+/caps-man/manager/interface/print
+/caps-man/security/add authentication-types=wpa2-psk encryption=aes-ccm name=SecMitarbeiter passphrase=Mitarbeiter1234 
+
+#Konfigurieren wie man denn trafik haben möchte
+#Local Breakout:
+/caps-man/datapath/add name=DPMitarbeiter local-forwarding=yes vlan-mode=use-tag vlan-id=10 
+
+#Central Breakout:
+/caps-man/datapath/add name=DPMitarbeiter local-forwarding=no vlan-mode=use-tag vlan-id=10 bridge=
+
+/caps-man/channel/add band=5ghz-n/ac freauenzy=5180,5260 extension-channel=Ceee name=5Ghz80width control-channel-width=20mhz tx-power=10
+
+/caps-man/configuration/add name=ConfMitarbeiter security=SecMitarbeiter channel=5Ghz80width country=austria datapath=DPMitarbeiter installation=indoor mode=ap ssid=Mitarbeiter
+/caps-man/provisioning/add hw-supported-modes=ac master-configuration=ConfMitarbeiter action=create-disabled name-format=prefix-indentity name-prefix="5ghz"
+
+#2.4GHz
+/caps-man/channel/add band=2ghz-g/n freauenzy=2412 name=2.4 control-channel-width=20mhz tx-power=5 save-selected=yes
+/caps-man/configuration/add name=2.4ConfMitarbeiter security=SecMitarbeiter channel=2.4 country=austria datapath=DPMitarbeiter installation=indoor mode=ap ssid=Mitarbeiter
+
+/caps-man/provisioning/add hw-supported-modes=g action=create-disabled master-configuration=2.4ConfMitarbeiter name-format=prefix-indentity name-prefix="2.4ghz"
+/caps-man/remote-cap/provision number=0
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+#CAP
+
+/system/identity/set name=cap
+
+/interface/bridge/add bridge=br
+/interface/bridge/port/add bridge=br interface=ether1
+/interface/bridge/port/add bridge=br interface=ether2
+/interface/bridge/port/add bridge=br interface=ether3
+/interface/bridge/port/add bridge=br interface=ether4
+/interface/bridge/port/add bridge=br interface=ether5
+
+/interface/vlan/add name=IntVL30 interface=br vlan-id=30
+/interface/bridge/valn/add vlan-ids=30 tagged=br,ether2 bridge=1
+/interface/wireless/cap/set enable=yes bridge=br interfaces=wlan1,wlan2 discovery-interface=br
+
+

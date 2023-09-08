@@ -1,0 +1,22 @@
+
+/ip/addres/add interface=ether1 address=20.1.1.129/26
+
+/ip/addres/add interface=ether1 address=10.0.0.129/25
+
+/ip/addres/add interface=ether1 address=192.168.16.1/24
+
+/ip/pool/add name=dangl range=10.0.0.135-20.1.1.145
+/ip/pool/add name=fischer range= ...-...
+/ip/pool/add name=felix range= ...-...
+/ip/dhcp-server/network/add address=20.1.1.128/26 gateway=20.1.1.129 dns-server=20.1.1.129
+/ip/dhcp-server/add address-pool = dangl interface=ether1 name=dhcpdangl
+
+/ip/dns/set allow-remote 
+
+
+/ip/dhcp-server/lease/print 
+/ip/dhcp-server/lease/make-static numbers=0
+/ip/dhcp-server/lease/set address=... numbers=0
+
+
+/ip/dhcp-server/lease/add mac-address = ... number = 0 server = dhcp1

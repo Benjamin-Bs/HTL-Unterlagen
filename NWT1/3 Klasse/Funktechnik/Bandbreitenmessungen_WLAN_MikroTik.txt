@@ -1,0 +1,25 @@
+/interface/bridge/add name=bridge1 vlan-filtering=yes
+
+/interface/bridge/port/add bridge=bridge1 interface=wlan2
+/ip/address/add address=192.186.10.1/24 interface=bridge1
+
+/ip/pool/add name=pool10 ranges=192.168.10.10-192.168.10.50
+/ip/dhcp-server/network/add address=192.168.10.0/24 gateway=192.168.10.
+
+/ip/dhcp-server/...
+
+/interface/wireless/security-profiles/add name=MyPSK mode=dynamic keys authentication-types=wpa2-psk wpa2-pre-shared-key=1234567890
+
+/interface/wireless/set wlan2 mode=ap-bridge ssid="" security-profile="" country=austria frequency=5660 instalation=indoor channel-widrh=20/40mhz-Ce band=5ghz-n/ac
+
+/interface/wireless/set wlan2 tx-power=1 disabled=no
+
+/interface/wireless/monitor wlan2
+
+
+Bandbreitenmessungen:
+
+Wir nutzen ein Tool das heißt iperf(3)
+
+https://iperf.fr/iperf-download.php#windows
+

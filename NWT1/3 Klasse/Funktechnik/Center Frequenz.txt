@@ -1,0 +1,23 @@
+Center Frequenz
+
+Wenn 5180 steht bedeutet es, es geht von 5170 bis 5190
+
+Bei 5200 geht er von 5190 bis 52100
+
+
+20/40/80MHz	-	Ceee
+			eCee
+			eeCe
+			eeeC
+			XXXX
+		
+
+frequency = 5200	20/40MHz	-	Ce
+
+Die Frequency bezieht sich immer auf das große C
+
+/interface/wireless/info/allowed-channels country=austria wlan2
+
+/ip/address/add address=10.0.0.1/24 interface=wlan2
+/ip/pool/add ranges = 10.0.0.10-10.0.0.50
+...

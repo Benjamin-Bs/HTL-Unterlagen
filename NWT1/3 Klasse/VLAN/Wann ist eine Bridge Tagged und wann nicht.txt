@@ -1,0 +1,11 @@
+Wann muss man die Bridge in eine Tagged-Liste schreiben und wann nicht?
+
+
+VLAN-Zuweisung:
+	
+	* Port-VLAN
+	* Dynamisch
+		- MAC-Adresse
+		- Benutzerabhängig
+	
+		

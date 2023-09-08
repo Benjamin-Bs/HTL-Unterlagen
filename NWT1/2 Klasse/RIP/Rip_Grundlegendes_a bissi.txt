@@ -1,0 +1,5 @@
+Für Rip braucht man eibe RIP-Instanz weil man mehrere Routing Prozesse gleichzeitig laufen lassen können
+ Instanz bekommt einen Namen
+	redistribute = connected
+
+Interface-Tempplate

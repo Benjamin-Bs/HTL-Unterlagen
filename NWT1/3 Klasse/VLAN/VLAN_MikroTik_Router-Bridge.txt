@@ -1,0 +1,44 @@
+ /system/identity/set/name=SW-1
+
+/interface/bridge/add name=bridge1
+/interface/bridge/port/add bridge=bridge1 interface=ether1 pvid=100
+/interface/bridge/port/add bridge=bridge1 interface=ether2 pvid=100
+
+/interface/bridge/port/add bridge=bridge1 interface=ether3 pvid=300
+/interface/bridge/port/add bridge=bridge1 interface=ether4 pvid=200
+/interface/bridge/port/add bridge=bridge1 interface=ether5
+
+
+/interface/bridge/vlan/add vlan-ids=bridge1 interface=ether5
+
+/interface/bridge/vlan/add vlan-ids=100 tagged=bridge1,ether5 untagged=ether1,ether2 bridge=bridge1
+...
+
+/inteface/vlan/add name=Vlan100
+/interface/vlan/add name=VL100 vlan-id=100 interface=bridge1 
+/interface/vlan/add name=VL200 vlan-id=200 interface=bridge1
+/interface/vlan/add name=VL300 vlan-id=300 interface=bridge1
+
+/ip/address/add adress=10.0.0.1/24 interface=VL100
+/ip/address/add adress=10.10.0.1/24 interface=VL200
+/ip/address/add adress=10.20.0.1/24 interface=VL300
+
+/interface/bridge/set vlan-filtering=yes numbers=0
+
+
+
+DHCP:
+
+/ip/pool/add ranges=10.0.0.10-10.0.0.100 name=pool100
+/ip/pool/add ranges=10.10.0.10-10.10.0.100 name=pool200
+/ip/pool/add ranges=10.20.0.10-10.20.0.100 name=pool300
+
+/ip/dhcp-server/network/add address=10.10.0.0/24 gateway=10.20.0.1 dns-server=
+
+/ip/dhcp-server/add address-pool=pool200 name=dhcp200 disabled=0 interface=
+
+
+
+/Firewall:
+
+/ip/firewall/filter/add src_address=10.0.0.0/24 dst-address=10.10.0.0/24 protocol=imp action=drop chain=forward connection-state=!established,related

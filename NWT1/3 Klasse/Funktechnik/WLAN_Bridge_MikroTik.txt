@@ -1,0 +1,26 @@
+/system/identity/set name=AP1
+
+/interface/bridge/add name=bridge1
+/interface/bridge/port/add bridge= bridge1 interface=ether2
+/interface/bridge/port/add bridge= bridge1 interface=ether3
+/interface/bridge/port/add bridge= bridge1 interface=ether4
+/interface/bridge/port/add bridge= bridge1 interface=ether5
+/interface/bridge/port/add bridge= bridge1 interface=wlan1
+/interface/bridge/port/add bridge= bridge1 interface=wlan2
+
+/ip/address/add address=192.168.0.1/24 interface=bridge1
+
+/ip/pool/add ranges=192.168.0.10-192.168.0.100
+/ip/dhcp-server/network/add gateway=192.168.0.1 address=192.168.0.0/24 dns-server=192.168.0.1
+
+
+//Um die Kanäle zu sehen
+/interface/wireless/info/country-info austria
+
+/interface/wireless/info/allowed-channels wlan2
+
+/interface/wireless/security-profiles/add name=Bob mode=dynamic-keys authentication-types=wpa2-psk wpa2-pre-shared-key=lol
+/interface/wireless/set wlan1 ssid=BOB8 security-profiles=bob disabled=no band=2ghz-g/n .
+
+
+/interface/wireless/registration-table/print

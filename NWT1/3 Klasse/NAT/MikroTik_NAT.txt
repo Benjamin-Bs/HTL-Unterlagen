@@ -1,0 +1,27 @@
+/interface bridge
+add name=bridge1
+/interface wireless
+set [ find default-name=wlan2 ] ssid=MikroTik
+/interface wireless security-profiles
+set [ find default=yes ] supplicant-identity=MikroTik
+add authentication-types=wpa2-eap eap-methods=peap mode=dynamic-keys mschapv2-username=200235 name=HTLAB supplicant-identity=Mikrotik tls-mode=dont-verify-certificate
+/interface wireless
+set [ find default-name=wlan1 ] disabled=no security-profile=HTLAB ssid=HTLHL
+/interface bridge port
+add bridge=bridge1 interface=ether1
+add bridge=bridge1 interface=ether2
+add bridge=bridge1 interface=ether3
+add bridge=bridge1 interface=ether4
+add bridge=bridge1 interface=ether5
+/ip address
+add address=10.0.200.1/25 interface=bridge1 network=10.0.200.0
+/ip dhcp-client
+add interface=wlan1
+/ip dns
+set allow-remote-requests=yes
+/ip firewall nat
+add action=masquerade chain=srcnat out-interface=wlan1
+add action=dst-nat chain=dstnat dst-port=80 in-interface=wlan1 protocol=tcp to-addresses=10.0.200.10
+/system clock
+set time-zone-name=Europe/Vienna
+[admin@MikroTik] > 

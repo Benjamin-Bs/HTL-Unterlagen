@@ -1,0 +1,19 @@
+/system/identity/set name=Router1
+/ip/address/add interface=ether1 address=192.168.0.1/24
+/ip/address/add interface=ether2 address=192.168.100.1/24
+/ip/address/add interface=ether3 address=192.168.200.1/24
+
+/ip/firewall/filter/add chain=forward action=drop src-address=192.168.100.0/24 dst-address=192.168.200.0/24
+/ip/firewall/filter/add chain=forward action=drop src-address=192.168.200.0/24 dst-address=192.168.100.0/24
+
+
+/ip/firewall/filter/add chain=forward action=drop src-address=192.168.200.0/24 dst-address=192.168.0.0/24
+/ip/firewall/filter/add chain=forward action=drop src-address=192.168.100.0/24 dst-address=192.168.0.0/24
+
+/ip/firewall/filter/add chain=forward action=accept protokol=tcp src-address=192.168.200.0/24 dst-address=192.168.0.0/24 dst-port=80,443
+/ip/firewall/filter/add chain=forward action=accept protokol=tcp src-address=192.168.100.0/24 dst-address=192.168.0.0/24 dst-port=80,443
+
+/ip/firewall/filter/move number=4,5 destination=2																								
+
+
+

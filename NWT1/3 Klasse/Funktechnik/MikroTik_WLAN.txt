@@ -1,0 +1,51 @@
+/interface/wireless/security-profiles/add name=mySecurity mode=dynamic-Keys authentication-typeswpa2-psk wpa2-shared-key=letmein ...
+/interface/wireless/set number=1 ssid=VLAN mode-ap-bridge security-profile=mySecurity disabled =no
+/interface/wireless/monitor print
+
+/ip/address/add address=192.168.10.1/24 interface=wlan2
+/ip/pool/add range=192.168.10.10- 192.168.10.100 name=pool10
+
+
+/interface/wireless/security-profiles/add name=hthl mode dynamic-keya authentication-type wpa2-eap supplicant-indentify=200235 eap-methods=peap mschap2-username=200235 tls-mode=dont-verify-certification
+/ip/dhcp-client/add interface wlan1 disabled =no
+
+/ip/firewall/nat/add outinterface=wlan1 action=masquerade
+
+/interface/wireless/registration-table/print
+
+/interface/wireless/set number=1 band=5ght-n/ac
+/interface/wireless/set number=1 channel-width=29/40/80mhz -Ceee
+
+//Ceee ist das steuerband
+
+Kanal:
+
+
+-------------------------------------------------------------------------------
+Teams:
+
+/interface wireless security-profiles
+
+add authentication-types=wpa2-psk mode=dynamic-keys name=mySecurity supplicant-identity=MikroTik
+
+add authentication-types=wpa2-eap eap-methods=peap mode=dynamic-keys mschapv2-username=fimi name=htlhl supplicant-identity=fimi tls-mode=dont-verify-certificate
+
+/interface wireless
+set [ find default-name=wlan1 ] disabled=no security-profile=htlhl ssid=HTLHL
+set [ find default-name=wlan2 ] disabled=no mode=ap-bridge security-profile=mySecurity ssid=VLAN
+
+/ip pool
+add name=pool10 ranges=192.168.10.10-192.168.10.50
+
+/ip dhcp-server
+add address-pool=pool10 interface=wlan2 name=dhcp1
+
+/ip address
+add address=192.168.10.1/24 interface=wlan2 network=192.168.10.0
+
+/ip dhcp-client
+add interface=wlan1
+/ip dhcp-server network
+add address=192.168.10.0/24 dns-server=172.16.1.1 gateway=192.168.10.1
+/ip firewall nat
+add action=masquerade chain=srcnat out-interface=wlan1

@@ -1,0 +1,6 @@
+/ip/address/add address =172.16.0.1 interface=wlan2
+/ip/pool/add ranges=172.16.0.10-172.16.0.50
+/ip/dhcp-server/add interface=wlan2 address-pool=pool10 disabled=no
+
+/interface/wireless/set wlan2 band=5ghz-n/ac channel-width=20mhz guard-interval=long mode=ap-bridge
+/interface/wireless/enable wlan2

@@ -1,0 +1,4 @@
+/caps-man/security/add authentication-types=wpa2-psk encryption=aes-ccm name=SecGast passphrase=Gast1234 
+
+/caps-man/configuration/add name=ConfGast security=SecGasr channel=5Ghz80width country=austria datapath=DPMitarbeiter installation=indoor mode=ap ssid=Mitarbeiter
+/caps-man/provisioning/add hw-supported-modes=ac slave-configuration=ConfGast action=create-disabled name-format=prefix-indentity name-prefix="5ghz"

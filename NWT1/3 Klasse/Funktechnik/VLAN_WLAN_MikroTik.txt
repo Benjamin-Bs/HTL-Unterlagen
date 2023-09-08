@@ -1,0 +1,51 @@
+Das Wlan interfae muss in die Tagged Liste
+VLAN:
+
+ID:		10				20				30
+IP:	192.168.10.0/24 	192.168.20.0/24	192.168.30.0/24
+
+---------------------------------------------------------------------------------------------------------
+
+
+/interface/bridge/port add bridge=br interface=ether1 pvid=10
+/interface/bridge/port add bridge=br interface=ether3 pvid=10
+/interface/bridge/port add bridge=br interface=ether4 pvid=20
+/interface/bridge/port add bridge=br interface=ether5 pvid=30
+/interface/bridge/port add bridge=br interface=wlan2
+
+/interface/bridge/vlan/add vlan-ids=20 tagged=br,wlan2 unntagged=ether1,ether3 bridge=br
+...
+
+/interface/vlan/add interface=br name=Vlan10 vlan-id=10
+/interface/vlan/add interface=br name=Vlan10 vlan-id=10
+/interface/vlan/add interface=br name=Vlan10 vlan-id=30
+
+
+ip/pool/add name=pool100 ranges=192.168.10.10-192.168.10.30
+...
+
+/ip/dhcp-server/network/add addresse=192.168.10.0/24 gateway=192.168.10.1 dns=192.168.10.1
+...
+
+/ip/dhcp-server/add name=dhcp10 address-pool=pool10 disabled=no interface=Vlan10
+...
+
+.
+.
+.
+
+/interface/wireless/set wlan2 ssid="" security-profile=mySecurity band=5ghz-n/ac channel-width=20/40/80mhz - XXX disabled=no country=autria ...
+
+/interface/wireless/set wlan2 tx-power-mode=all-rates-fixed tx-power=1
+
+
+/interface/wireless/set wlan2 vlan-mode=use-tag vlan=10
+
+/interface/wireless/add name=Gast5G ssid=Gast vlan-mode=use-tag vlan-id=30 security-profiles=default disabled=no master-interface=wlan2 mode=ap-bridge
+
+/interface/bridge/port/ add bridge=br interface=Gast5G
+
+(
+/interface/wireless/acces-list/add mac-address="12:34:56:78:90:AB" vlan-mode=use-tag vlan-id=200
+)
+

@@ -1,0 +1,73 @@
+Switch:
+
+enable
+conf t
+int fa 0/11
+switchport mode trunk
+desc Trunk zum Nachbar-Switch
+
+
+int fa 0/12
+desc Trunk zum Nachbar-Switch
+switchport mode trunk
+
+int fa 0/1
+desc Access-Port im VLAN 100
+switchport mode access
+switchport acces vlan 100
+
+int fa 0/2
+desc Access-Port im VLAN 200
+switchport mode access
+switchport acces vlan 200
+
+int fa 0/3
+desc Access-Port im VLAN 300
+switchport mode access
+switchport acces vlan 300
+
+
+Router:
+
+en
+conf t
+int fa 0/0
+desc Trunk zum switch
+no shut
+
+int fa 0/0.1
+desc VLAN 100
+encapsulation dot1Q 100
+ip address 192.168.1.1 255.255.255.0
+//nat 
+ip nat inside 
+
+int fa 0/0.2
+desc VLAN 200
+encapsulation dot1Q 200
+ip address 192.168.2.1 255.255.255.0
+//nat 
+ip nat inside 
+
+int fa 0/0.3
+desc VLAN 300
+encapsulation dot1Q 300
+ip address 192.168.3.1 255.255.255.0
+//nat 
+ip nat inside 
+
+//DHCP
+ip dhcp pool vlan100
+network 192.168.1.0 255.255.255.0
+defoult-router 192.168.1.1
+dns-server 172.16.1.1
+
+ip dhcp pool vlan200
+network 192.168.2.0 255.255.255.0
+defoult-router 192.168.2.1
+dns-server 172.16.1.1
+
+ip dhcp pool vlan300
+network 192.168.3.0 255.255.255.0
+defoult-router 192.168.3.1
+dns-server 172.16.1.1

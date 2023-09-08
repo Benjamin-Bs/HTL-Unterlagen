@@ -1,0 +1,8 @@
+<user.home>/.CarConfiguratorFX/
+
+
+{
+	"maufacturer": "Lada",
+	"type": "Taiga",
+	"power": 34
+	"range"

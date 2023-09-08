@@ -1,0 +1,11 @@
+Test-Stoff SeW
+
+alles was bisher gemacht worden ist
+ 
+arrayVsList (befühlen und benutzen)
+
+Forwart- vs Reversenginering (UML wiederholen) 
+
+Vererbung 
+
+Schleifen (sehr warscheinlich, Muster) 

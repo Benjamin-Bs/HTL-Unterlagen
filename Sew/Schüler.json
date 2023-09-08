@@ -1,0 +1,43 @@
+[ {
+  "firstName" : "Stefan",
+  "surName" : "Bayer",
+  "mustPayAmount" : 25.0,
+  "payedAmount" : 6.25,
+  "outstandingAmount" : 18.75,
+  "id" : 0
+}, {
+  "firstName" : "Benjmain ",
+  "surName" : "Suljevic",
+  "mustPayAmount" : 25.0,
+  "payedAmount" : 6.25,
+  "outstandingAmount" : 18.75,
+  "id" : 0
+}, {
+  "firstName" : "Adrian ",
+  "surName" : "Zeitlberger",
+  "mustPayAmount" : 25.0,
+  "payedAmount" : 6.25,
+  "outstandingAmount" : 18.75,
+  "id" : 0
+}, {
+  "firstName" : "Tom",
+  "surName" : "Turbo",
+  "mustPayAmount" : 100.0,
+  "payedAmount" : 6.25,
+  "outstandingAmount" : 93.75,
+  "id" : 0
+}, {
+  "firstName" : "Bob ",
+  "surName" : "Boblio",
+  "mustPayAmount" : 25.0,
+  "payedAmount" : 6.25,
+  "outstandingAmount" : 18.75,
+  "id" : 0
+}, {
+  "firstName" : "Donald",
+  "surName" : "Duck",
+  "mustPayAmount" : 25.0,
+  "payedAmount" : 83.25,
+  "outstandingAmount" : -58.25,
+  "id" : 0
+} ]

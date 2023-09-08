@@ -1,0 +1,2 @@
+JAVA_VERSION="18.0.2.1"
+MODULES="java.base com.fasterxml.jackson.annotation com.fasterxml.jackson.core java.datatransfer java.xml java.prefs java.desktop com.fasterxml.jackson.databind java.logging javafx.base jdk.unsupported javafx.graphics javafx.controls java.scripting javafx.fxml de.jensd.fx.glyphs.commons de.jensd.fx.glyphs.fontawesome org.controlsfx.controls com.example"

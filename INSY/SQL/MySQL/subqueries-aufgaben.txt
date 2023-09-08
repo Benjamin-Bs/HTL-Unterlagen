@@ -1,0 +1,29 @@
+﻿
+1) Welches ist das teuerste Buch in der Datenbank?
+
+SELECT titel FROM buecher where verkaufspreis = (Select MAX(verkaufspreis) from buecher);
+
+2) Welches ist das billigste Buch in der Datenbank?
+
+SELECT titel FROM buecher where verkaufspreis = (Select MIN(verkaufspreis) from buecher);
+
+3) Lassen Sie sich alle Bücher ausgeben, deren Einkaufspreis über dem durchschnittlichen Einkaufspreis aller Bücher in der Datenbank liegt.          
+
+SELECT titel from buecher where einkaufspreis > (Select AVG(einkaufspreis) from buecher);
+            
+4) Lassen Sie sich alle Bücher ausgeben, deren Einkaufspreis über dem durchschnittlichen Einkaufspreis der Thriller liegt.
+
+SELECT titel from buecher where einkaufspreis > (Select AVG(einkaufspreis) from buecher CROSS JOIN Sparten CROSS JOIN buecher_has_sparten where buecher.verlage_verlage_id = 3 AND sparten.sparten_id = 3 AND buecher_has_sparten.sparten_sparten_id = 3 );
+
+5) Lassen Sie sich alle Thriller ausgeben, deren Einkaufspreis über dem durchschnittlichen Einkaufspreis der Thriller liegt.
+
+SELECT * FROM sparten, buecher, buecher_has_sparten WHERE 
+    buecher_id = buecher_buecher_id AND sparten_id = sparten_sparten_id AND bezeichnung = 'Thriller'
+    AND einkaufspreis > 
+    (SELECT AVG(einkaufspreis) FROM sparten, buecher, buecher_has_sparten WHERE 
+    buecher_id = buecher_buecher_id AND sparten_id = sparten_sparten_id AND bezeichnung = 'Thriller');
+
+6) Lassen Sie sich alle Bücher ausgeben, bei denen der Gewinn überdurchschnittlich ist; bei der Berechnung des Gewinndurchschnitts berücksichtigen Sie NICHT das Buch mit der id 22.
+
+SELECT * FROM buecher WHERE 
+    verkaufspreis - einkaufspreis > (SELECT AVG(verkaufspreis) - AVG(einkaufspreis) FROM buecher WHERE buecher_id != 22);

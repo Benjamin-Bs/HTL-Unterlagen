@@ -1,0 +1,57 @@
+
+Einfache SELECT-Aufgaben auf die Tabelle bbc(name, region, area, population, gdp)
+---------------------------------------------------------------------------------
+    gdp (gross domestic product) --> Bruttoinlandsprodukt
+
+1) Gibt den Namen, die Region und die Bevölkerungszahl aller Länder aus.
+	
+	select name, region, population from bbc;
+
+2) Wie heißen die vier Länder, deren Bevölkerungszahl mindestens 200 Millionen beträgt?
+	
+	select name from bbc where population>20000000;
+
+3) Nenne die Namen und das Pro-Kopf-Einkommen aller Länder mit einer Bevölkerungszahl
+   von mindestens 200 Millionen?
+
+	select name, gdp/population from bbc where population>20000000;
+   
+4) Ermittle die Namen und die Bevölkerungszahl (in Millionen) der Länder der
+   Region 'South America'.
+   (Teile die Bevölkerungszahl einfach durch 1.000.000 und runde auf die nächste ganze Zahl.)
+	
+	select name, round(population/1000000) from bbc where region = 'South America';
+   
+5) Zeige die Namen und die Bevölkerungszahlen für 'France', 'Germany', 'Italy'.
+
+	SELECT name, population FROM bbc WHERE name = 'France', 'Germany', 'Italy';
+
+6) Ermittle die Länder, deren Namen das Wort 'United' enthält.
+
+	SELECT name FROM bbc WHERE name LIKE '%United%';
+
+7) Ermittle die Größe der Weltgesamtbevölkerung.
+
+	SELECT SUM(population) FROM bbc
+
+8) Zeige alle Regionen - aber jede nur einmal.
+
+	SELECT DISTINCT region FROM bbc;
+
+9) Wie heißen die Länder mit einem Bruttoinlandsprodukt (gdp) größer als Gesamt-Afrika?
+
+	SELECT name FROM bbc WHERE gdp > (SELECT SUM(gdp) WHERE region LIKE 'Africa'); 
+
+
+10) Zeig für jede Region die Region und die Anzahl der zugehörigen Länder.
+
+	select region, count(name) from bbc group by region;	
+
+11) Ermittle für jede Region die Region und die Anzahl der Länder mit einer
+    Bevölkerungszahl von mindestens 10 Millionen.
+    
+	select region, count(name) from bbc where population > 10000000 group by region;
+
+12) Erstell eine Liste der Regionen mit einer Gesamtbevölkerung von mindestens 100 Millionen.
+
+	select region from bbc group by region having sum(population) > 100000000;

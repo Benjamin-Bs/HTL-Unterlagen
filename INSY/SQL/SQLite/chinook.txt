@@ -1,0 +1,19 @@
+select CustomerId, FirstName, LastName, Country from customers where country not like 'USA';
+
+select * from customers where country like 'Brazil';
+
+select FirstName, LastName, InvoiceId, InvoiceDate, BillingCountry from customers inner join invoices where country like 'Brazil';
+
+select * from employees where title like 'Sales Support Agent';
+
+select distinct billingCountry from invoices;
+
+select employees.FirstName, employees.LastName, total from employees inner join customers on customers.SupportRepId = employees.EmployeeId inner join invoices on invoices.CustomerId = customers.CustomerId where title like 'Sales Support Agent';
+
+select customers.FirstName, customers.LastName, customers.country, employees.FirstName, employees.LastName, total from employees inner join customers on customers.SupportRepId = employees.EmployeeId inner join invoices on invoices.CustomerId = customers.CustomerId;
+
+select strftime('%Y', InvoiceDate) as year, sum(total) as totalsum from invoices group by year having year='2009' or year='2011';
+
+select count(invoice_items.invoiceid), invoice_Items.invoiceId as NumOfInvoices from Invoices inner join invoice_items on invoice_items.invoiceid=invoices.invoiceid Group by invoice_items.invoiceid having invoice_items.invoiceId=37;
+
+select count(invoice_items.invoiceid), invoice_Items.invoiceId as NumOfInvoices from Invoices inner join invoice_items on invoice_items.invoiceid=invoices.invoiceid Group by invoice_items.invoiceid;

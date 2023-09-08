@@ -1,0 +1,43 @@
+.gitignor
+
+git init : erstellt ein Repository in dem Ordner
+git status
+git add
+git rm --cached
+git commit -m
+git add -A 
+
+
+Editor:
+:q
+:wq
+:q! --> Wircklich beenden
+
+
+git log = Um die Commits zu sehen (History)
+git lg 
+git remote -v 
+-v steht für gesprächig
+
+git remote add ....
+git remote remove ...
+
+git push -u ....
+
+
+in .git liegt alles was man gemacht hat mit allen versionen 
+git fetch
+git merge
+
+git diff = kann man die Änderungen auf der Commado Zeile sehen
+
+git config pull.rebase true  = Rebase
+git config pull.rebase false = Merge
+
+git merge --abort
+
++--------------------------------------------------------+
+| STRG + F //Wichtig			    				  |
++--------------------------------------------------------+
+
+

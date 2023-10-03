@@ -1,0 +1,60 @@
+- NAT-Network erstellen
+
+Nat Network auswähl
+
+File --> Preferences --> Network 
+
+Name: NatNetwork3AHITS
+Ip-Adresse: 
+Supports DHCP nicht ankreuzen
+
+Port Forwarding:
+SSH (Host IP) 127.0.0.1   22      10.0.30.5 		22
+
+Bei Network umstellen
+
+
+- Statische IP-Adresse
+
+nano /etc/network/interfaces
+
+inet static
+	address 10.0.30.5/25
+	gateway 10.0.30.1
+
+systemctl restart ifup@....
+ip addr
+
+ssh root@localhost
+
+nano etc/resolv.conf
+nameserver 10.0.30.1
+
+- DHCP-Server installieren
+
+apt install isc-dhcp-server
+
+- Konfiguration
+
+nano /etc/default/isc-dhcp-server
+
+INTERFACESv4="enp0s3"
+nano /etc/dhcp/dhcpd.conf
+
+			".3ahits"
+... name-server 10.0.30.1
+
+subnet 10.0.30.0 netmask 255.255.255.128{
+		option routers 10.0.30.1;
+		range 10.0.30.10 10.0.30.126;
+}
+
+systemctl restart isc-dhcp-server
+
+host Debian-Client-Suljevic {
+hardware ethernet 08:00:27:bf:32:80;
+fixed-address 10.0.30.50;
+default-lease-time 86400;
+}
+
+

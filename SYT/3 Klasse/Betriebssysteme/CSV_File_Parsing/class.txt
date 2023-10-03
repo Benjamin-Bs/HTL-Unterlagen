@@ -1,0 +1,27 @@
+class ScoresObject{
+	[int]$sumOfScores
+	[int]$count
+
+	ScoreObject([int]$sumOfScores){
+		$this.sumOfScores = $sumOfScores
+		$this.count = 1
+	}
+
+	[float]getAverage(){
+	return ( this.$sumOfScores / this.$count)	
+	}
+
+	addScore([int]$scoreToAdd){
+		this.sumOfScores += $scoreToAdd
+		this.count++
+	}
+
+
+Wenn die Klasse in einem anderen File ist
+. ./Datei.ps1
+
+
+--------------------------------------------
+Wenn man das Objekt dann nutzt:
+
+[ScoresObject]::new(8,5)

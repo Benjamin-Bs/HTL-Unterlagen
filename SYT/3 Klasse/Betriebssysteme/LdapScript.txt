@@ -1,0 +1,27 @@
+while read line; do //Shebang  
+
+ldapdata="$( ldapsearch -b $line -x -H ldaps://ngfs.intra -oTLS_REQCERT=never givenName sn ou )"   givenName="$( echo "$ldapdata" | grep "givenName:" )"
+  if [[ "$givenName" =~ ^givenName:: ]]; then
+    givenName="$( echo "$givenName" | sed "s/givenName:: //g" | base64 -d )"
+  else
+    givenName="$( echo "$givenName" | sed "s/givenName: //g" )"
+  fi
+  sn="$( echo "$ldapdata" | grep "sn:" )"
+  if [[ "$sn" =~ ^sn:: ]]; then
+    sn="$( echo "$sn" | sed "s/sn:: //g" | base64 -d )"
+  else
+    sn="$( echo "$sn" | sed "s/sn: //g" )"
+  fi
+  echo "$sn,$givenName" >> classList.csv
+done <<< "$( ldapsearch -b OU=IT,o=HTBL -x -H ldaps://ngfs.intra -oTLS_REQCERT=never "(&(objectClass=Person)(ou=3AHITS))" | grep "dn: " | sed "s/dn: //g" )" 
+
+----------------------------------------------------------------------------------------------------------------------------
+
+grep ... Ein Filter (also alle zeilen wo ein z.B.: ein dn: beginnt)
+sed  ... Löscht sachen weg
+
+read ... liest bis er eine bestimmtes zeichen bekommt und dann wird alles in die Variable line gechrieben
+
+-b   ... Angeben wo die Suche beginnt 
+
+Parameter in der Bash sind einfach durchnumeriert z.B.: $0,$1

@@ -1,7 +1,0 @@
-Scp
-
-scp -R 
-
--R : geht direkt 
-
-scp -R beutzer@ip

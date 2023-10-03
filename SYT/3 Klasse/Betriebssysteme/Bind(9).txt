@@ -1,0 +1,49 @@
+apt install bind9 bind9-utils
+
+apt upgrade
+
+cd /etc/bind/
+
+nano name.conf.
+nano name.conf.local
+nano name.conf.default-zones
+
+
+cp named.conf.default-zones named.conf.my-zones
+nano named.conf.my-zones
+zone: 3ahits.at
+	type master;
+	file /etc/bind/db.3ahits.at
+nano named.conf
+
+
+nano db.local
+cp db.local db.3ahits.at
+
+nano db.3ahits.at
+#erste zeile:
+#	localhost. root.localhost.(
+#	
+#@ IN NS localhost.
+
+ns.3ahits.at. root.localhost.(
+
+@ 	IN 	NS 	ns.3ahits.
+ns	IN	A 	10.0.10.5
+www	IN	A	10.0.10.5
+
+#
+cp db.127 db.10.0.10
+nano db.10.0.10
+
+5	IN	PTR	ns.3ahits.at.
+
+nano named.conf.my-zones
+
+zone "10.0.10.in-addr-arpa"{
+type master
+file etc/bins/db.10.0.10
+};
+
+systemctl restart named
+

@@ -1,5 +1,0 @@
-cd /media/cdrom1
-cp VBoxLinuxAdditions.run /root/
-cd 
-apt install build-essential linux-headers-amd64
-./VBoxLinuxAdditions.run

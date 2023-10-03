@@ -1,0 +1,11 @@
+Windows Core:
+
+Win Core-Menü: Set-SConfig
+
+
+Client:
+
+Add-WindowsCapability -online -name rsat.servermanger* | Add-WindowsCapbility -online
+ Add-WindowsCapability -online -name rsat.activeDir* | Add-WindowsCapbility -online
+ Add-WindowsCapability -online -name rsat.dhcp* | Add-WindowsCapbility -online
+ Add-WindowsCapability -online -name rsat.dns* | Add-WindowsCapbility -online

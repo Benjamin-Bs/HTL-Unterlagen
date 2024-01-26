@@ -1,0 +1,22 @@
+/interface wireless
+set [ find default-name=wlan1 ] ssid=MikroTik
+set [ find default-name=wlan2 ] ssid=MikroTik
+/interface wireless security-profiles
+set [ find default=yes ] supplicant-identity=MikroTik
+/ip hotspot profile
+set [ find default=yes ] html-directory=hotspot
+/routing ospf instance
+add disabled=no name=OSPF1 redistribute=connected router-id=192.168.30.1
+/routing ospf area
+add disabled=no instance=OSPF1 name=backbone
+/ip address
+add address=10.0.0.5/30 interface=ether1 network=10.0.0.4
+add address=10.0.0.9/30 interface=ether3 network=10.0.0.8
+add address=10.0.0.21/30 interface=ether2 network=10.0.0.20
+add address=192.168.30.1/24 interface=ether5 network=192.168.30.0
+/routing ospf interface-template
+add area=backbone cost=15 disabled=no interfaces=ether1
+add area=backbone cost=15 disabled=no interfaces=ether2
+add area=backbone cost=15 disabled=no interfaces=ether3
+/system identity
+set name=Router3

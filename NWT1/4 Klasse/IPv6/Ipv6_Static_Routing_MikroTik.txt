@@ -1,0 +1,12 @@
+/interface wireless
+/ipv6 address
+add address=fd17::1 interface=ether3
+add address=fd19::1 interface=ether2
+add address=fd05::1 interface=ether4
+/ipv6 nd prefix
+add interface=ether2 prefix=fd19::/64
+add interface=ether4 prefix=fd05::/64
+add interface=ether3 prefix=fd17::/64
+/system identity
+set name=RouterJBF
+

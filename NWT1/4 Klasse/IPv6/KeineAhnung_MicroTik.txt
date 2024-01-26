@@ -1,0 +1,6 @@
+/ipv6/nd/prefix/add autonomous=yes prefix=fd00::/64 interface=ether2
+
+/ipv6/nd/prefix/add autonomous=yes prefix=fd01::/64 interface=ether3
+
+
+/ipv6/address/add interface=ether2 advertise=yes

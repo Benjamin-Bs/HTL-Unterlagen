@@ -1,0 +1,26 @@
+{
+	"folders": [
+		{
+			"path": "../../Display Potenziometer"
+		},
+		{
+			"path": "../../Potenziometer PWM"
+		},
+		{
+			"path": "../../Display"
+		},
+		{
+			"name": "WifiWebserver",
+			"path": "../../WifiWebserver"
+		},
+		{
+			"name": "Temperature Sensor",
+			"path": "../../Temperature Sensor"
+		},
+		{
+			"name": "Web Server",
+			"path": ".."
+		}
+	],
+	"settings": {}
+}

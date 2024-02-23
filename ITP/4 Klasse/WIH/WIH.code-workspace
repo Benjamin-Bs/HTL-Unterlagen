@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "LoRaWanDemo",
+			"path": "LoRaWanDemo"
+		}
+	],
+	"settings": {}
+}

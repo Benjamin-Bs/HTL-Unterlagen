@@ -2,10 +2,10 @@
 
 const char* ssid = "HTLIoT";
 const char* password = "hollabrunn";
-const char* host = "192.168.1.100"; // Change this to the IP address of your ESP32 server
+const char* host = "172.18.40.108"; // Change this to the IP address of your ESP32 server
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(9600);
 
   // Connect to Wi-Fi
   WiFi.begin(ssid, password);

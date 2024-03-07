@@ -4,7 +4,7 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
 
-#define SSID "HTLIoT6"
+#define SSID "HTLIoT"
 #define WIFI_PW "hollabrunn"
 
 const int oneWireBus = 4;

@@ -28,3 +28,33 @@ Wie entscheidet man sich?
 Mann muss sich die Fragen stellen: **Ist es in Ordnung Daten zu verlieren oder nicht**
 
 Mit TCP eine höhere Datenrate
+
+
+
+Es definiert einen Paket Formater um die Pakete zu übersetzten
+
+
+
+### Nutztung von UDP
+
+- Auto (Geschwindigkeitssignale)
+
+- Streaming (Netflix)
+
+- ...
+
+
+
+### UDP Header
+
+- Längenfeld (16 bit)
+
+- Source Port (16 bit) & Destination Port (16 bit)
+
+- Checksumme (16 bit)
+
+
+
+Jedes Betriebssystem unterstütz IP-Fregmentation
+
+

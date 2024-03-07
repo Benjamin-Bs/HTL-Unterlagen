@@ -6,7 +6,7 @@ set [ find default=yes ] supplicant-identity=MikroTik
 /ip hotspot profile
 set [ find default=yes ] html-directory=hotspot
 /routing ospf instance
-add disabled=no name=OSPF1 redistribute=connected router-id=192.168.30.1
+add disabled=no name=OSPF1 redistribute=connected,ospf router-id=192.168.30.1
 /routing ospf area
 add disabled=no instance=OSPF1 name=backbone
 /ip address

@@ -1,0 +1,14 @@
+router
+switch
+pc 
+acces points
+
+Paar fragen:
+
+Djkstra (alles wissen)
+
+
+Trollman: Ich brauch noch eine Musterlösung
+Fischer: Was weißt du eigentlih wie viel das ist ich brauch 10 Stunden dafür
+Trollman: Was, die sollen das in 4 Stunden schaffen
+Fischer: Mir egal

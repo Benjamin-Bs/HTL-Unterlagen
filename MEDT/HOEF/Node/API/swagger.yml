@@ -1,0 +1,99 @@
+openapi: 3.0.0
+info:
+  title: Meine API
+  version: 1.0.0
+paths:
+  /planets/{id}:
+    get:
+      summary: Get Planet by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the planet to get
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+    delete:
+      summary: Delete Planet by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the planet to delete
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Planet deleted
+  /facilities/{id}:
+    get:
+      summary: Get Facility by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the facility to get
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+    delete:
+      summary: Delete Facility by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the facility to delete
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Facility deleted
+    post:
+      summary: Create Facility
+      requestBody:
+        content:
+          application/json:
+            schema:
+              # Define your request body schema here
+      responses:
+        '200':
+          description: Facility created
+    put:
+      summary: Update Facility by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the facility to update
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              # Define your request body schema here
+      responses:
+        '200':
+          description: Facility updated
+    patch:
+      summary: Partially Update Facility by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the facility to update
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              # Define your request body schema here
+      responses:
+        '200':
+          description: Facility partially updated

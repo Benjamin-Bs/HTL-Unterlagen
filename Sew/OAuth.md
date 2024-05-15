@@ -8,9 +8,7 @@ z.B.: Einem Client wird der Zugriff auf den Resource Server (REST-API) durch ein
 
 
 
-
-
-
+![](file:///C:/Users/bsulj/Desktop/HTL-Unterlagen/Sew/OAuth.jpg)
 
 
 

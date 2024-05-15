@@ -1,0 +1,37 @@
+# Router1:
+
+/system/identity/set name=R1
+
+/ipv6/address/add address=fd03::1/64 interface=ether1
+/ipv6/address/add address=fd01::1/64 interface=ether2
+
+/ipv6/route/add disabled=no gateway=fd03::2%ether1 dst-address=fd02::/64
+
+
+# Router2:
+
+/system/identity/set name=R2
+
+/ipv6/address/add address=fd03::2/64 interface=ether1
+/ipv6/address/add address=fd02::1/64 interface=ether2
+
+/ipv6/route/add disabled=no gateway=fd03::1%ether1 dst-address=fd01::/64
+
+
+# Debian1/2:
+
+<interface> = ens4
+
+ip address
+
+sudo nano /etc/network/interfaces.d/<interface>
+    auto <interface>
+    iface <interface> inet6 auto
+
+sudo systemctl restart networking
+
+
+
+# Wireshark:
+
+sudo apt-get install wireshark

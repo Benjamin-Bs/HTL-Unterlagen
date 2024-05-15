@@ -42,7 +42,7 @@ void connectToMQTT()
   while (!client.connected())
   {
     Serial.print("Attempting MQTT connection...");
-    if (client.connect("ESP-29"))
+    if (client.connect("ESP-30"))
     {
       Serial.println("connected");
     }
@@ -58,7 +58,7 @@ void connectToMQTT()
 
 void sendTemperatureToBroker(float temperature)
 {
-  String payload = "{\"name\":\"ESP-29\",\"value\":" + String(temperature) + "}";
+  String payload = "{\"name\":\"ESP-30\",\"value\":" + String(temperature) + "}";
   client.publish("HTL/NB/4AHITS/temperatures", payload.c_str());
 }
 

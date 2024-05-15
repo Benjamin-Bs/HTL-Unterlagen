@@ -8,7 +8,7 @@ set [ find default=yes ] html-directory=hotspot
 /routing ospf instance
 add disabled=no name=OSPF1 redistribute=connected,ospf router-id=192.168.30.1
 /routing ospf area
-add disabled=no instance=OSPF1 name=backbone
+add disabled=no instance=OSPF1 name=backbone area-id = 0.0.0.0ö
 /ip address
 add address=10.0.0.5/30 interface=ether1 network=10.0.0.4
 add address=10.0.0.9/30 interface=ether3 network=10.0.0.8

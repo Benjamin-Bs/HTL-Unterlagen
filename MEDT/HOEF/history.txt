@@ -1,0 +1,15 @@
+print "Hallo Welt"
+print Hallo Welt
+print 'Hallo Welt'
+10 + 255
+36 / 5
+a = 40
+b = 28
+a+b
+console.log("Hello");
+console.log("Hello Welt");
+x = 5
+do {
+x++;
+console.log(x);
+} while (x < 15);

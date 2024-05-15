@@ -1,8 +1,12 @@
 N_ROUNDS = 10
 
-key        = b'\xc3,\\\xa6\xb5\x80^\x0c\xdb\x8d\xa5z*\xb6\xfe\\'
+key = b'\xc3,\\\xa6\xb5\x80^\x0c\xdb\x8d\xa5z*\xb6\xfe\\'
 ciphertext = b'\xd1O\x14j\xa4+O\xb6\xa1\xc4\x08B)\x8f\x12\xdd'
 
+
+def bytes2matrix(text):
+    """ Converts a 16-byte array into a 4x4 matrix.  """
+    return [list(text[i:i + 4]) for i in range(0, len(text), 4)]
 
 
 def expand_key(master_key):
@@ -43,22 +47,23 @@ def expand_key(master_key):
             word = [s_box[b] for b in word]
 
         # XOR with equivalent word from previous iteration.
-        word = bytes(i^j for i, j in zip(word, key_columns[-iteration_size]))
+        word = bytes(i ^ j for i, j in zip(word, key_columns[-iteration_size]))
         key_columns.append(word)
 
     # Group key words in 4x4 byte matrices.
-    return [key_columns[4*i : 4*(i+1)] for i in range(len(key_columns) // 4)]
+    return [key_columns[4 * i: 4 * (i + 1)] for i in range(len(key_columns) // 4)]
 
 
 def decrypt(key, ciphertext):
-    round_keys = expand_key(key) # Remember to start from the last round key and work backwards through them when decrypting
+    round_keys = expand_key(
+        key)  # Remember to start from the last round key and work backwards through them when decrypting
 
     # Convert ciphertext to state matrix
 
     # Initial add round key step
 
     for i in range(N_ROUNDS - 1, 0, -1):
-        pass # Do round
+        pass  # Do round
 
     # Run final round (skips the InvMixColumns step)
 
@@ -67,4 +72,4 @@ def decrypt(key, ciphertext):
     return plaintext
 
 
-# print(decrypt(key, ciphertext))
+print(decrypt(key, ciphertext))

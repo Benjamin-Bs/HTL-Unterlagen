@@ -1,0 +1,13 @@
+ nc flagsdistribution.challs.open.ecsc2024.it 38001
+den key in my.key und das Zertifikat in my.pem speichern
+
+openssl genrsa -out flag.key 2048
+openssl req -new -out flag.csr -key flag.key -subj "/O=Flags distribution Inc."
+ openssl x509 -req -in flag.csr -out flag.pem -CA my.pem -CAkey my.key
+
+openssl genrsa -out admin.key 2048
+openssl req -new -out admin.csr -key admin.key -subj "/CN=FlagsDistributionAdministrator"
+openssl x509 -req -in admin.csr -out admin.pem -CA flag.pem -CAkey flag.key
+cat rootCACert.pem my.pem flag.pem > chain.pem
+
+openssl s_client -connect flagsdistribution.challs.open.ecsc2024.it:38000 -cert admin.pem -key admin.key -CAfile chain.pem -no_tls1_3 -noservername

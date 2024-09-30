@@ -2,6 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/../../../.." vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../../../INSY/4 Klasse/DB-Performance" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../../../../INSY/4 Klasse/Library" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../../../../INSY/4 Klasse/MySQLToMongoDB" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../../../../ITP/3_Klasse/ITP3A-A1-4Gewinnt" vcs="Git" />

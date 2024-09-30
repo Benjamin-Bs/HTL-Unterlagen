@@ -1,0 +1,36 @@
+/interface ethernet
+set [ find default-name=ether1 ] disable-running-check=no
+set [ find default-name=ether2 ] disable-running-check=no
+set [ find default-name=ether3 ] disable-running-check=no
+set [ find default-name=ether4 ] disable-running-check=no
+set [ find default-name=ether5 ] disable-running-check=no
+set [ find default-name=ether6 ] disable-running-check=no
+set [ find default-name=ether7 ] disable-running-check=no
+set [ find default-name=ether8 ] disable-running-check=no
+/disk
+set slot1 slot=slot1 type=hardware
+set slot2 slot=slot2 type=hardware
+/interface wireless security-profiles
+set [ find default=yes ] supplicant-identity=MikroTik
+/port
+set 0 name=serial0
+/routing ospf instance
+add disabled=no name=OSPFInst2 redistribute=connected router-id=10.0.0.2
+/routing ospf area
+add disabled=no instance=OSPFInst2 name=backbone
+/ip address
+/ip/address/add address=10.0.0.13/30 interface=ether1 network=10.0.0.12
+add address=10.0.0.2/30 interface=ether2 network=10.0.0.0
+add address=192.168.20.1/24 interface=ether5 network=192.168.20.0
+add address=10.0.0.18/30 interface=ether3 network=10.0.0.16
+/ip dhcp-client
+add interface=ether1
+/routing ospf interface-template
+add area=backbone cost=15 disabled=no interfaces=ether2
+add area=backbone cost=10 disabled=no interfaces=ether1
+add area=backbone cost=50 disabled=no interfaces=ether3
+/system identity
+set name=Router2
+/system note
+set show-at-login=no
+[admin@Router2] >

@@ -42,8 +42,8 @@ Es definiert einen Paket Formater um die Pakete zu übersetzten
 - Streaming (Netflix)
 
 - ...
-
-
+  
+  
 
 ### UDP Header
 
@@ -52,9 +52,7 @@ Es definiert einen Paket Formater um die Pakete zu übersetzten
 - Source Port (16 bit) & Destination Port (16 bit)
 
 - Checksumme (16 bit)
+  
+  
 
-
-
-Jedes Betriebssystem unterstütz IP-Fregmentation
-
-
+Jedes Betriebssystem unterstütz **IP-Fregmentation**

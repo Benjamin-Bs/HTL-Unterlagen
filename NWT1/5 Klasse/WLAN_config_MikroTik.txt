@@ -1,0 +1,29 @@
+/interface bridge
+add name=bridge1
+/interface wifi security
+add authentication-types=wpa2-psk disabled=no name=SecHTLIoT
+add authentication-types=wpa2-psk name=sec
+/interface wifi
+set [ find default-name=wifi1 ] configuration.country=Austria .manager=local .mode=station-bridge .ssid=HTLIoT disabled=no security=SecHTLIoT
+set [ find default-name=wifi2 ] configuration.mode=ap .ssid=Reiche2.1 disabled=no security=sec
+/ip pool
+add name=pool1 ranges=192.168.88.100-192.168.88.200
+/ip dhcp-server
+add address-pool=pool1 interface=bridge1 name=dhcp1
+/interface bridge port
+add bridge=bridge1 interface=ether1
+add bridge=bridge1 interface=wifi2
+/ip address
+add address=192.168.88.3/24 interface=bridge1 network=192.168.88.0
+/ip dhcp-client
+add interface=wifi1
+/ip dhcp-server network
+add address=192.168.88.0/24 gateway=192.168.88.197
+/system clock
+set time-zone-name=Europe/Vienna
+/system identity
+set name=hapac2-15
+/system note
+set show-at-login=no
+/system ntp client
+set enabled=yes

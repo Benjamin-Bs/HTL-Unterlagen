@@ -1,0 +1,10 @@
+{
+  "appId": "at.htlhl",
+  "appName": "medt_5ahits_demo",
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  }
+}

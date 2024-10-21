@@ -1,0 +1,7 @@
+{
+  "name": "medt_5ahits_demo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

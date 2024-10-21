@@ -47,8 +47,12 @@ Mögliche Eigenschaften von Graphen:
 - Gewichtet:
   
   - Ein gewichteter Graph ist ein Graph, dessen Kanten ein Gewicht (numerischer Wert) zugewiesen ist
+  - 
+    
 
+- Zyklischer Graph
 
+- Zusammenhängender Graph
 
 
 
@@ -59,3 +63,5 @@ Ein zyklus ist ein Kantenzug mit unterschiedlichen Kanten bei dem Start und Endk
 ### Zusammenhängender Graph:
 
 Ein Graph heißt zusammenhängend, wenn es von jedem Knoten einen Weg zu jedem anderen Knoten gibt.
+
+

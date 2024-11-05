@@ -1,0 +1,55 @@
+/system/identity/ set name=Reiche2
+/interface/bridge/add name=bridge1
+/interface/bridge/port add bridge=bridge1 interface=ether1
+/interface/bridge/port add bridge=bridge1 interface=ether2
+/interface/bridge/port add bridge=bridge1 interface=ether3
+
+/ip/address/add interface=ether1 address=192.168.88.0/24
+/ip/pool/add name=deadpool ranges=192.168.88.100-192.168.88.200
+/ip/dhcp-server/network/add address=192.168.88.0/24 gateway=192.168.88.2 dns-server=192.168.88.2
+/ip/dhcp-server/add address-pool=deadpool interface=ether1 name=dhcpServe
+
+/interface/wifi/security add authentication-types=wpa2-psk ft-nas-identifier=Reiche2 name=mySecurity
+/interface/Wifi set [ find default-name=wifi2 ] aaa.nas-identifier=Reiche2 configuration.mode=ap .ssid=Reiche2 disabled=no name=Reiche2 security=mySecurity
+
+
+# fertige config
+
+# serial number = D7160DDEBBA2
+/interface bridge
+add name=bridge1
+/interface wifi security
+add authentication-types=wpa2-psk disabled=no name=SecHTLIoT
+add authentication-types=wpa2-psk ft-nas-identifier=Reiche2 name=mySecurity
+/interface wifi
+set [ find default-name=wifi2 ] aaa.nas-identifier=Reiche2 configuration.mode=ap .ssid=Reiche2 disabled=no name=\
+    Reiche2 security=mySecurity
+set [ find default-name=wifi1 ] configuration.country=Austria .manager=local .mode=station-bridge .ssid=HTLIoT \
+    disabled=no security=SecHTLIoT
+/ip pool
+add name=deadpool ranges=192.168.88.100-192.168.88.200
+/interface bridge port
+add bridge=bridge1 interface=ether1
+add bridge=bridge1 interface=ether2
+add bridge=bridge1 interface=ether3
+add bridge=bridge1 interface=Reiche2
+/ip address
+add address=192.168.88.0/24 interface=ether1 network=192.168.88.0
+/ip dhcp-client
+add interface=wifi1
+/ip dhcp-server
+# DHCP server can not run on slave interface!
+add address-pool=deadpool interface=ether1 name=dhcpServer
+/ip dhcp-server network
+add address=192.168.88.0/24 dns-server=192.168.88.2 gateway=192.168.88.2
+/ip dns
+set allow-remote-requests=yes
+/system clock
+set time-zone-name=Europe/Vienna
+/system identity
+set name=Reiche2
+/system note
+set show-at-login=no
+/system ntp client
+set enabled=yes
+

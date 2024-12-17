@@ -79,3 +79,5 @@ A vertical hierarchy has multiple layers of management, with a clear chain of co
 * **Reduced Employee Autonomy:** Employees in a vertical hierarchy often have less autonomy, which can result in lower morale or engagement if they feel micromanaged.
 * **Higher Costs:** Maintaining multiple layers of management can increase payroll and administrative costs, which may be unsustainable for smaller organizations.
 * **Communication Silos:** Information can get lost or distorted as it moves up and down the chain, potentially leading to misunderstandings or lack of alignment across departments.
+
+

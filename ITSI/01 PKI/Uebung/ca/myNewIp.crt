@@ -1,0 +1,132 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 4102 (0x1006)
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C=AT, ST=LowerAustria, L=Hollabrunn, O=Suljevic.test.htl-hl.at, OU=Test, CN=Test Suljevc
+        Validity
+            Not Before: Nov 20 07:56:14 2024 GMT
+            Not After : Feb  6 07:56:14 2033 GMT
+        Subject: C=AT, ST=LowerAustria, L=Hollabrunn, O=Suljevic AG, CN=Bobo
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (4096 bit)
+                Modulus:
+                    00:ef:bf:5b:1c:27:35:96:88:0c:a9:52:eb:a1:43:
+                    d5:03:ec:3e:92:d0:17:b2:f7:c0:88:bb:8e:d4:53:
+                    71:6c:ac:25:f9:7d:52:e1:48:10:a6:c8:21:09:45:
+                    eb:71:df:c3:0b:b7:42:3e:7d:1e:e1:f9:5a:b1:47:
+                    52:85:4c:32:c0:8e:ec:4e:b2:39:9a:01:a2:db:21:
+                    fd:12:59:e6:23:f2:a5:d3:25:66:f9:db:da:3a:88:
+                    50:60:74:73:37:c7:e8:dd:db:d6:11:d0:e8:fb:6b:
+                    e1:0e:1b:49:8f:03:4b:57:a5:5a:2f:0d:83:73:65:
+                    16:60:74:f9:49:a5:b0:2d:c5:88:cb:9f:0f:e6:1e:
+                    80:07:be:58:48:66:5a:76:94:42:bc:68:27:55:d0:
+                    23:98:b6:5d:0d:68:b8:7c:bf:32:b6:a6:d2:9d:3b:
+                    f6:15:c2:69:4c:00:97:0d:eb:40:c3:40:b1:11:00:
+                    08:9e:8c:50:e6:9b:ab:b1:0a:c7:f9:ab:85:5d:9c:
+                    b4:a0:63:79:21:b9:79:6b:c7:6e:d4:30:bc:3d:b4:
+                    29:40:23:20:7a:22:30:48:e5:1d:8c:e6:45:ed:0d:
+                    9b:ef:6c:47:66:92:18:ea:0f:15:e5:6d:bc:f3:7d:
+                    bf:98:b4:ca:b6:7e:55:02:f7:7e:8f:c5:cd:41:c0:
+                    00:7c:8a:e4:a1:9e:68:1e:f7:29:9f:cc:c3:9d:82:
+                    97:b8:34:a9:5e:e8:df:e4:14:96:fa:72:23:94:1e:
+                    dc:9b:eb:b4:be:4f:fd:e2:9b:01:81:fb:71:48:32:
+                    75:d3:d6:72:3c:34:ae:3c:b1:94:67:36:bf:aa:40:
+                    bd:11:b7:f9:19:cd:c0:69:9d:24:74:5c:2d:46:db:
+                    ae:67:e1:1f:44:52:3b:e9:96:9c:e7:6e:f2:f9:70:
+                    38:e8:8d:d8:f2:e4:b6:f1:e0:77:25:b2:4b:a0:c8:
+                    f0:62:3a:bf:c2:40:8a:c8:ea:91:61:cb:cb:2d:e9:
+                    4e:61:7e:64:bc:29:cc:93:36:b0:1b:40:d2:a5:bb:
+                    33:a0:9b:f2:e5:83:2b:31:b6:18:5c:c5:eb:b1:7f:
+                    a6:4c:cf:e7:57:0b:a6:a2:3f:18:c8:59:33:1a:59:
+                    55:07:b1:12:03:10:9c:88:28:aa:4b:70:9d:7e:ca:
+                    e9:45:77:e7:31:54:6c:03:99:e7:e0:2b:2e:25:9a:
+                    29:c1:3a:21:74:28:1d:ba:07:0d:6e:17:69:c3:c3:
+                    3c:2a:bb:d3:68:5c:d7:3b:d9:2a:01:1f:85:c4:7d:
+                    6d:ed:76:72:01:95:67:a2:bb:1f:99:18:56:dd:e8:
+                    c1:1d:4a:d9:30:8c:36:00:1b:ec:0e:2e:11:3e:33:
+                    13:95:71
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: critical
+                CA:TRUE
+            X509v3 Subject Key Identifier: 
+                6A:E4:73:C7:D9:0A:9F:B8:EE:44:F9:D3:85:35:6B:1A:A6:51:3A:C2
+            X509v3 Authority Key Identifier: 
+                keyid:92:C6:88:3D:DF:3F:EA:14:B1:44:6A:16:44:50:FB:85:91:9A:50:29
+                DirName:/C=AT/ST=LowerAustria/L=Hollabrunn/O=Suljevic.htl-hl.ac.at/OU=IT/CN=Benjamin Suljevic/emailAddress=no
+                serial:10:00
+            X509v3 Key Usage: critical
+                Digital Signature, Certificate Sign, CRL Sign
+            X509v3 Subject Alternative Name: 
+                DNS:localhost, DNS:127.0.0.1, DNS:172.17.128.1, DNS:abc.sul.ac.at
+    Signature Algorithm: sha256WithRSAEncryption
+    Signature Value:
+        2b:8e:07:b1:2c:c4:a4:e7:ab:14:e0:90:43:66:12:6c:91:15:
+        c0:0b:ff:a1:00:04:5a:98:04:c1:54:65:3b:0e:aa:30:86:c1:
+        b2:e4:de:b3:a1:a3:73:08:a2:eb:dc:a9:02:d3:e1:d1:ce:a8:
+        5b:9f:16:8f:56:ed:23:7e:7e:e5:e8:41:41:8a:83:a6:2f:33:
+        9b:a3:11:12:c2:f2:e7:6e:f1:58:54:32:a5:a7:ae:23:94:34:
+        41:9c:fb:5a:61:4a:27:28:17:a4:f0:6c:06:cc:47:1c:41:dd:
+        7e:21:d6:63:fa:4a:f5:43:2c:72:4e:60:55:57:36:39:83:d5:
+        92:d0:00:cb:a1:0d:99:2e:60:98:1b:55:31:45:ee:0f:34:7f:
+        61:3e:04:7e:ab:83:d4:71:35:a9:e6:96:36:84:eb:4b:57:8e:
+        8c:6a:af:f3:49:8f:46:78:d1:d5:4a:91:2a:1e:42:4c:fb:86:
+        42:d5:85:15:8e:01:15:7a:3a:63:28:7a:fa:3c:89:b0:0e:15:
+        11:13:c1:77:c2:f8:d7:a7:63:d6:2f:29:c5:03:6c:67:ee:fe:
+        8b:42:d1:c9:89:24:8c:18:31:c6:b7:a0:43:f7:08:ab:1f:2d:
+        c6:bc:1e:ac:8d:14:44:df:24:91:5e:3f:87:da:5c:6e:6c:71:
+        7e:95:b3:e8:ed:94:e9:a1:6e:08:af:73:d7:66:cc:c6:1d:5b:
+        6b:db:03:d8:8a:61:78:9d:19:d6:94:5e:64:f6:3d:23:9b:ea:
+        fb:54:16:50:db:87:82:83:a7:70:b5:1d:7c:1a:24:48:83:ef:
+        fd:5e:83:47:b5:f7:7d:e2:c5:2b:05:3a:a3:be:92:a5:3b:72:
+        a1:ca:55:45:60:4d:a7:89:cd:fd:5f:67:f7:72:6b:9c:7e:f0:
+        16:d0:2a:6f:0f:c1:dd:3d:91:62:f5:80:3a:c0:9c:d6:61:bc:
+        9b:42:a2:cd:59:0d:8e:0e:7b:95:fd:0a:47:d0:c2:8f:2a:3a:
+        9d:12:4c:1e:6c:b5:af:25:cd:2b:23:78:a0:aa:e4:08:34:d4:
+        74:af:12:8d:3a:f6:13:d4:20:7d:59:ac:72:93:cf:93:0a:ab:
+        e1:b5:1a:ae:e8:90:d6:07:39:19:79:ea:b9:60:14:ce:e4:4a:
+        43:e5:83:35:32:cb:0b:b7:8d:9f:65:46:d3:9c:8e:92:c9:a9:
+        0f:38:62:4f:00:64:96:22:b0:80:fb:d6:e2:99:c1:01:46:80:
+        48:f6:2e:01:01:8f:95:94:9c:4c:01:d1:02:fe:d6:6e:d7:ad:
+        5b:db:d5:32:2a:54:53:dc:69:56:6c:d3:09:bf:09:c6:e2:79:
+        c0:1d:96:38:73:c4:49:ee
+-----BEGIN CERTIFICATE-----
+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
+W9vVMipUU9xpVmzTCb8JxuJ5wB2WOHPESe4=
+-----END CERTIFICATE-----

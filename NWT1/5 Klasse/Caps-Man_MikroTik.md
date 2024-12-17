@@ -12,7 +12,6 @@ Wireless Lan
 
 /interface/wifi/capsman/set enabled=yes interface=VLAN10
 /interface/wifi/provisioning/add supported-bands=5ghz-ax master-configuration=Gaeste5GHz name-format=%I-5GHz action=create-enabled
-
 ```
 
 

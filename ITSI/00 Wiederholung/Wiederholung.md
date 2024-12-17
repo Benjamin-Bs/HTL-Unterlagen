@@ -42,7 +42,7 @@ Salting verhindert Kollisionen
 
 - **Bidirektionale Funktion**, welche Eingangsdaten unter der Verwendung eines Schlüssels in Ausgangsdaten überführt (=Verschlüsselung)
 
-- Mit Hilfe des Schlüsseks können die Ausgangsdaten wieder in die Eingangsdaten überführt werden, ohne Schlüssel ist dies nicht möglich (= Entschlüsselung)
+- Mit Hilfe des Schlüssels können die Ausgangsdaten wieder in die Eingangsdaten überführt werden, ohne Schlüssel ist dies nicht möglich (= Entschlüsselung)
 
 - Varianten:
   
@@ -105,5 +105,3 @@ Salting verhindert Kollisionen
 - Wie kann Phishing erkannt werden?
 
 - DAU = Dümmster Anzunehmenster User
-
-
